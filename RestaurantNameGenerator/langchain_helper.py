@@ -1,13 +1,17 @@
-from langchain_openai import ChatOpenAI
+#from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
+from langchain_community.llms import GPTNeo
 from secret_key import openapi_key
 import os
 
 os.environ['OPENAI_API_KEY'] = openapi_key
 
-llm = ChatOpenAI(temperature=0.7)
+#llm = ChatOpenAI(temperature=0.7)
+
+llm = GPTNeo.from_pretrained('EleutherAI/gpt-neo-2.7B')
+#chain = LLMChain(llm=model)
 
 
 def getRestaurantNameAndItems(cuisine):
